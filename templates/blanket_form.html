@@ -1,0 +1,28 @@
+{% extends 'main.html' %}
+{% block content %}
+    <form action="{{url_for('blanket_order')}}" method="post">
+        {{form.hidden_tag()}}
+
+        <fieldset class="form-group">
+            <legend style="color: #4682B4" class="border-bottom mb-4">Blanket Form</legend>
+            <div class="form-group">
+                {{ form.increment.label(class="form-control-label") }}:
+                {% if form.increment.errors %}
+                    {{ form.increment(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.increment.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.increment(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+        </fieldset>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+
+
+    </form>
+{% endblock content %}
